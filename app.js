@@ -34,21 +34,36 @@ require('./routes')(app);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-// const sql = require('mssql');
-//
-// require("msnodesqlv8");
-// const conn = new sql.ConnectionPool({
-//     database: "OnlineCafe",
-//     server: "DESKTOP-9P4Q99S\\SQLEXPRESS",
-//     driver: "msnodesqlv8",
-//     options: {
-//         trustedConnection: true
-//     }
-// });
-// conn.connect().then(() => {
-//
-// });
-// error handler
+
+const sql = require('mssql');
+
+const pool = new sql.ConnectionPool({
+    user: 'cuprum',
+    password: 'ginger',
+    server: 'DESKTOP-9P4Q99S',
+    database: 'OnlineCafe',
+    port:'18842'
+});
+
+pool.connect(err => {
+    console.error(err);
+    let request = new sql.Request(pool);
+    request.query('select * from Booking', (err, result) => {
+        if (err){
+            console.error(err);
+        }else{
+            console.log(result.recordset)
+        }
+
+
+
+    });
+
+});
+
+
+
+//error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
