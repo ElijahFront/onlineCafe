@@ -1,0 +1,47 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }
+
+.main__header {
+  text-align: center; }
+
+.main__description {
+  text-align: center; }
+
+.main__team_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px; }
+
+.team__member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 23%; }
+
+.team__img {
+  max-width: 100%; }
+
+.main__buttons {
+  text-align: center; }
+
+.button__show {
+  margin-right: 20px;
+  transition-duration: 100ms; }
+  .button__show:hover {
+    color: blue; }
+
+.button__add {
+  transition-duration: 100ms; }
+  .button__add:hover {
+    color: blue; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1.main__header Онлайн-кафе
+  p.main__description Контрольное домашнее задание
+    br
+    | по дисциплине "Управление данными"
+    br
+    | на тему "Проектирование базы данных Кофейни с возможностью заказывать онлайн с разных устройств"
+  h2.main__team_header Команда:
+  .main__team_container
+    .team__member
+        img.team__img(src="https://pp.userapi.com/c837225/v837225060/4fbde/g9Xo6te6buQ.jpg")
+        h4.team__name Илья Сметанин
+        p.team__member_description
+            Создание отчетов, разработка веб-приложения, разработка модели базы данных
+    .team__member
+        img.team__img(src="https://pp.userapi.com/c845521/v845521462/b9bc1/PKsaZonu1R0.jpg")
+        h4.team__name Андрей Рыков
+        p.team__member_description
+            Разработка модели базы данных, создание базы данных, составление запросов к базе данных
+    .team__member
+        img.team__img(src="https://pp.userapi.com/c846216/v846216568/12687/p2cx79WDgjM.jpg")
+        h4.team__name Александр Милоградский
+        p.team__member_description
+            Разработка модели базы данных, разработка хранимых процедур
+
+  .main__buttons
+    a.button__show(href="/orders") Посмотреть заказы
+    a.button__add(href="/add_order") Добавить заказ
