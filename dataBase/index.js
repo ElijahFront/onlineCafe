@@ -1,25 +1,24 @@
 const sql = require('mssql');
 
-require("msnodesqlv8");
-const conn = new sql.Connection({
-    database: "OnlineCafe",
-    server: "DESKTOP-9P4Q99S\\SQLEXPRESS",
-    driver: "msnodesqlv8",
-    options: {
-        trustedConnection: true
-    }
-});
-conn.connect().then(() => {
-    // ... sproc call, error catching, etc
-    // example: https://github.com/patriksimek/node-mssql#request
+const pool = new sql.ConnectionPool({
+    user: 'cuprum',
+    password: 'ginger',
+    server: 'DESKTOP-9P4Q99S',
+    database: 'OnlineCafe',
+    port:'18842'
 });
 
-// async () => {
-//     try {
-//         await sql.connect('mssql://username:password@localhost/database')
-//         const result = await sql.query`select * from mytable where id = ${value}`
-//         console.dir(result)
-//     } catch (err) {
-//         // ... error checks
-//     }
-// }
+pool.connect(err => {
+    console.error(err);
+    let request = new sql.Request(pool);
+    request.query(`select ui.Name, oh.DateOfOrder, oh.SumToPay, oh.Bill
+                    from OrderHeader oh
+                    join Booking b on b.Bill = oh.Bill
+                    join UserInfo ui on oh.UserInfoID = ui.UserInfoID`, (err, result) => {
+        if (err){
+            console.error(err);
+        }else{
+            console.log(result.recordset)
+        }
+    });
+});

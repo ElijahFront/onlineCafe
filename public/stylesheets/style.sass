@@ -30,14 +30,31 @@ a
 
 .main__buttons
   text-align: center
+  a
+    transition-duration: 100ms
+    &:hover
+      color: blue
 
-.button__show
+.button__show, .button__main
   margin-right: 20px
-  transition-duration: 100ms
-  &:hover
-    color: blue
 
-.button__add
+
+
+.add__user_form
+  margin-bottom: 50px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+.add__user_input
+  margin: 20px
+
+.orders__table
+  margin-bottom: 40px
+  margin-left: auto
+  margin-right: auto
+
+.order__delete_btn
   transition-duration: 100ms
   &:hover
     color: blue

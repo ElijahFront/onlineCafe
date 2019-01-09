@@ -1,4 +1,9 @@
 module.exports = function (req, res, next) {
+    let name = req.body.add__name,
+        dateOfReg = req.body.add__date,
+        isAdmin = req.body.add__admin;
+
+
     const sql = require('mssql');
 
     const pool = new sql.ConnectionPool({
@@ -12,13 +17,15 @@ module.exports = function (req, res, next) {
     pool.connect(err => {
         console.error(err);
         let request = new sql.Request(pool);
-        request.query(`select * from UserInfo`, (err, result) => {
+        request.query(`INSERT into [dbo].[UserInfo] ([Name], [DateOfRegistration], [IsAdmin])
+         VALUES (\'${name}\', getdate(), ${isAdmin})`, (err, result) => {
             if (err){
                 console.error(err);
-            }else{
-                res.render('orders', {users:result.recordset})
+            } else{
+                console.log("successfully added user");
+
+                res.redirect("/add_order");
             }
         });
     });
-
 };

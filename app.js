@@ -35,31 +35,32 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-const sql = require('mssql');
-
-const pool = new sql.ConnectionPool({
-    user: 'cuprum',
-    password: 'ginger',
-    server: 'DESKTOP-9P4Q99S',
-    database: 'OnlineCafe',
-    port:'18842'
-});
-
-pool.connect(err => {
-    console.error(err);
-    let request = new sql.Request(pool);
-    request.query('select * from Booking', (err, result) => {
-        if (err){
-            console.error(err);
-        }else{
-            console.log(result.recordset)
-        }
-
-
-
-    });
-
-});
+// const sql = require('mssql');
+//
+// const pool = new sql.ConnectionPool({
+//     user: 'cuprum',
+//     password: 'ginger',
+//     server: 'DESKTOP-9P4Q99S',
+//     database: 'OnlineCafe',
+//     port:'18842'
+// });
+//
+// pool.connect(err => {
+//     console.error(err);
+//     let request = new sql.Request(pool);
+//     request.query(`select ui.Name, oh.DateOfOrder, oh.SumToPay
+// from OrderHeader oh
+// join Booking b on b.Bill = oh.Bill
+// join UserInfo ui on oh.UserInfoID = ui.UserInfoID`, (err, result) => {
+//         if (err){
+//             console.error(err);
+//         }else{
+//             console.log(result.recordset)
+//         }
+//
+//     });
+//
+// });
 
 
 
