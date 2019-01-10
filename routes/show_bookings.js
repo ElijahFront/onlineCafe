@@ -12,11 +12,12 @@ module.exports = function (req, res, next) {
     pool.connect(err => {
         console.error(err);
         let request = new sql.Request(pool);
-        request.query(`select * from UserInfo`, (err, result) => {
+        request.query(`select b.BookingID, b.CafeTableID, b.StartTime, b.EndTime, o.TotalSum 
+from Booking b join OrderDetail o on b.Bill = o.Bill`, (err, result) => {
             if (err){
                 console.error(err);
             }else{
-                res.render('orders', {users:result.recordset})
+                res.render('bookings', {bookings:result.recordset})
             }
         });
     });

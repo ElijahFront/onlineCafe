@@ -1,6 +1,6 @@
 module.exports = function (req, res, next) {
-    let orderId = req.params.order_id;
-    console.log(orderId);
+    let bookingId = req.params.booking_id;
+    console.log(bookingId);
 
     const sql = require('mssql');
 
@@ -15,9 +15,13 @@ module.exports = function (req, res, next) {
     pool.connect(err => {
         console.error(err);
         let request = new sql.Request(pool);
-        request.query(`delete from UserInfo 
-                        where UserInfoID = ${orderId}`, (err, result) => {
-            if (err) console.error(err);
+        request.query(`delete from Booking 
+                        where BookingID = ${bookingId}`, (err, result) => {
+            if (err){
+                console.error(err);
+            } else{
+                res.sendStatus(200);
+            }
         });
     });
 };

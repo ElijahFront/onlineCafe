@@ -1,8 +1,8 @@
 module.exports = function (app) {
     app.get(['/', '/index'], require('./main'));
-    app.get('/orders', require('./show_orders'));
-    app.get('/add_order', require('./add_order_page'));
+    app.get('/bookings', require('./show_bookings'));
+    app.get('/add_user', require('./add_user_page'));
 
-    app.post('/delete_order/:order_id', require('./delete_order'));
+    app.post('/delete_booking/:booking_id', require('./delete_booking'));
     app.post('/new__user', require('./addNewValue'));
 };

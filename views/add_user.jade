@@ -3,7 +3,7 @@ extends layout
 block content
     h1.orders__header Добавить пользователя
     form.add__user_form(name="add__form" action="/new__user" method="post")
-        input.add__user_input(placeholder="Имя" name="add__name")
+        input.add__user_input(placeholder="Имя" name="add__name" required="required")
         //input.add__user_input(placeholder="Дата регистрации" name="add__date")
-        input.add__user_input(placeholder="Админ (1/0)" name="add__admin")
+        input.add__user_input(placeholder="Админ (1/0)" name="add__admin" required="required")
         button.add__user_btn(type="submit") Добавить

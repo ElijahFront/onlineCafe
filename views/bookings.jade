@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1.orders__header Bookings
+    if bookings
+        table.orders__table(cellspacing="5" cellpadding="10")
+            tr
+                th Cafe Table Id
+                th Start time
+                th End time
+                th Total sum
+
+                each booking in bookings
+                    tr
+                        td #{booking.CafeTableID}
+                        td #{booking.StartTime}
+                        td #{booking.EndTime}
+                        td #{booking.TotalSum}
+                        td.order__id_cell
+                            a.order__delete_btn(href="#" data-order_id="#{booking.BookingID}") Delete
+    else
+        h3 No bookings yet
